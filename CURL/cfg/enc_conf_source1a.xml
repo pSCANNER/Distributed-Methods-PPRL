@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+
+<encryption_config>
+	<DBMS>PostgreSQL</DBMS>
+	<DatabaseReaderConnection>
+		<database>rosita</database>
+		<schema>tz</schema>
+		<table>source1a</table>
+		<url>jdbc:postgresql://localhost:5432/</url>
+		<user>rosita</user>
+		<password>rosita@2012</password>
+	</DatabaseReaderConnection>
+
+	<DatabaseWriterConnection>
+		<database>rosita</database>
+		<schema>tz</schema>
+		<table>source1a_encrypted</table>
+		<url>jdbc:postgresql://localhost:5432/</url>
+		<user>rosita</user>
+		<password>rosita@2012</password>
+	</DatabaseWriterConnection>
+
+	<DatabaseMap>
+		<MappedPair algorithm="PPRL" attr="dob">
+			<read_col>s_dob</read_col>
+			<write_col>s_dob_hash</write_col>
+		</MappedPair>
+
+		<MappedPair algorithm="PPRL" attr="mob">
+			<read_col>s_mob</read_col>
+			<write_col>s_mob_hash</write_col>
+		</MappedPair>
+		<MappedPair algorithm="PPRL" attr="yob">
+			<read_col>s_yob</read_col>
+			<write_col>s_yob_hash</write_col>
+		</MappedPair>
+
+	
+		<MappedPair algorithm="PPRL" attr="FN">
+			<read_col>first</read_col>
+			<write_col>first_hash</write_col>	
+		</MappedPair>
+
+		<MappedPair algorithm="PPRL" attr="LN">
+			<read_col>last</read_col>
+			<write_col>last_hash</write_col>	
+		</MappedPair>
+
+		<MappedPair algorithm="PPRL" attr="id" clear-text="yes">
+			<read_col>id</read_col>
+			<write_col>id</write_col>	
+		</MappedPair>
+		<MappedPair algorithm="PPRL" attr="city">
+			<read_col>city</read_col>
+			<write_col>city_hash</write_col>
+		</MappedPair>
+		<MappedPair algorithm="PPRL" attr="sex">
+			<read_col>sex</read_col>
+			<write_col>sex_hash</write_col>
+		</MappedPair>
+
+	</DatabaseMap>
+
+	<Blocking>
+		<read_col>zip</read_col>
+		<write_col>zip_hash</write_col>
+	</Blocking>
+
+</encryption_config>
+
+
+

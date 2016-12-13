@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+
+<linkage_config>
+
+	<DBMS>PostgreSQL</DBMS>
+
+	<DatabaseSourceA>
+		<database>rosita</database>
+		<table>source1a_set_encrypted</table>
+		<schema>tz</schema>
+		<url>jdbc:postgresql://localhost:5432/</url>
+		<user>rosita</user>
+		<password>rosita@2012</password>
+	</DatabaseSourceA>
+
+	<DatabaseSourceB>
+		<database>rosita</database>
+		<table>source1b_set_encrypted</table>
+		<schema>tz</schema>
+		<url>jdbc:postgresql://localhost:5432/</url>
+		<user>rosita</user>
+		<password>rosita@2012</password>
+	</DatabaseSourceB>
+
+	<DatabaseSaver>
+		<database>rosita</database>
+		<schema>tz</schema>
+		<url>jdbc:postgresql://localhost:5432/</url>
+		<user>rosita</user>
+		<password>rosita@2012</password>
+	</DatabaseSaver>
+
+	<LinkageConfig>
+		<acceptancelevel>100</acceptancelevel>
+		<weightidenfifier>MANUAL</weightidenfifier>
+		<joinmethod>NESTED_LOOP_JOIN</joinmethod>
+		<pprl_threshold>0.94</pprl_threshold>
+		<missingdatavalue>0</missingdatavalue>
+	</LinkageConfig>
+
+	
+	<DatabaseMap>
+
+	<MappedPair attr="DOB" algorithm="PPRL" weight="1.01">
+			<read_col>fn_ln_dob_hash</read_col>
+			<write_col>fn_ln_dob_hash</write_col>
+		</MappedPair>
+	<MappedPair attr="MOB" algorithm="PPRL" weight="1.01">
+			<read_col>dob_email_hash</read_col>
+			<write_col>dob_email_hash</write_col>
+		</MappedPair>
+	<MappedPair attr="YOB" algorithm="PPRL" weight="1.01">
+			<read_col>ln_email_hash</read_col>
+			<write_col>ln_email_hash</write_col>
+		</MappedPair>
+	<MappedPair attr="sex" algorithm="PPRL" weight="1.01">
+			<read_col>long_hash_hash</read_col>
+			<write_col>long_hash_hash</write_col>
+		</MappedPair>		
+	</DatabaseMap>
+	<Linking>
+		<left_pk>id</left_pk>
+		<right_pk>id</right_pk>
+	</Linking>
+	
+</linkage_config>

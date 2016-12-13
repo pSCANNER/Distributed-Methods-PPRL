@@ -1,0 +1,13 @@
+if (trimFront != -1) {
+	column = column.substring(trimFront > column.length() ? column.length() : trimFront);
+}
+if (trimEnd != -1) {
+	column = column.substring(0, column.length() - trimEnd < 0 ? 0 : column.length() - trimEnd);
+}
+if (leaveFront != -1) {
+	column = column.substring(0, leaveFront < column.length() ? leaveFront : column.length());
+}
+if (leaveEnd != -1) {
+	column = column.substring(column.length() - leaveEnd > 0 ? column.length() - leaveEnd : 0, column.length());
+}
+return column;

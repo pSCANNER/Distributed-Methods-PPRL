@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+
+<linkage_config>
+
+	<DBMS>PostgreSQL</DBMS>
+
+	<DatabaseSourceA>
+		<database>postgres</database>
+		<table>sourcea5k_20_missing</table>
+		<schema>tz</schema>
+		<url>jdbc:postgresql://localhost:5431/</url>
+		<user>postgres</user>
+		<password>postgres</password>
+	</DatabaseSourceA>
+
+	<DatabaseSourceB>
+		<database>postgres</database>
+		<table>sourceb5k_15_missing</table>
+		<schema>tz</schema>
+		<url>jdbc:postgresql://localhost:5431/</url>
+		<user>postgres</user>
+		<password>postgres</password>
+	</DatabaseSourceB>
+
+	<DatabaseSaver>
+		<database>postgres</database>
+		<schema>tz</schema>
+		<url>jdbc:postgresql://localhost:5431/</url>
+		<user>postgres</user>
+		<password>postgres</password>
+	</DatabaseSaver>
+
+	<LinkageConfig>
+		<acceptancelevel>80</acceptancelevel>
+		<weightidenfifier>EM</weightidenfifier>
+		<joinmethod>NESTED_LOOP_JOIN</joinmethod>
+		<missingdatavalue>DISTANCE_IMPUTATION</missingdatavalue>
+	</LinkageConfig>
+
+	
+	<DatabaseMap>
+		
+		<MappedPair attr="SSN" algorithm="EDIT_DISTANCE" weight="0.4">
+			<read_col>SSN</read_col>
+			<write_col>SSN</write_col>
+		</MappedPair>
+		<MappedPair attr="LastName" algorithm="EDIT_DISTANCE" weight="0.2">
+			<read_col>Last</read_col>
+			<write_col>Last</write_col>
+		</MappedPair>
+		<MappedPair attr="FirstName" algorithm="EDIT_DISTANCE" weight="0.2">
+			<read_col>First</read_col>
+			<write_col>First</write_col>
+		</MappedPair>
+		<MappedPair attr="Zip" algorithm="EDIT_DISTANCE" weight="0.2">
+			<read_col>zip</read_col>
+			<write_col>zip</write_col>
+		</MappedPair>
+		
+	</DatabaseMap>
+	<Linking>
+		<left_pk>id</left_pk>
+		<right_pk>id</right_pk>
+	</Linking>
+	
+</linkage_config>

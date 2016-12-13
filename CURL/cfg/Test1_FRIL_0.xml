@@ -1,0 +1,78 @@
+<?xml version="1.0" ?>
+
+<linkage_config>
+
+	<DBMS>PostgreSQL</DBMS>
+
+	<DatabaseSourceA>
+		<database>rosita</database>
+		<table>source1a</table>
+		<schema>tz</schema>
+		<url>jdbc:postgresql://localhost:5432/</url>
+		<user>rosita</user>
+		<password>rosita@2012</password>
+	</DatabaseSourceA>
+
+	<DatabaseSourceB>
+		<database>rosita</database>
+		<table>source1b</table>
+		<schema>tz</schema>
+		<url>jdbc:postgresql://localhost:5432/</url>
+		<user>rosita</user>
+		<password>rosita@2012</password>
+	</DatabaseSourceB>
+
+	<DatabaseSaver>
+		<database>rosita</database>
+		<schema>tz</schema>
+		<url>jdbc:postgresql://localhost:5432/</url>
+		<user>rosita</user>
+		<password>rosita@2012</password>
+	</DatabaseSaver>
+
+	<LinkageConfig>
+		<acceptancelevel>80</acceptancelevel>
+		<weightidenfifier>EM</weightidenfifier>
+		<joinmethod>NESTED_LOOP_JOIN</joinmethod>
+		<missingdatavalue>0</missingdatavalue>
+	</LinkageConfig>
+
+	
+	<DatabaseMap>
+
+	<MappedPair attr="DOB" algorithm="EDIT_DISTANCE" weight="0.2">
+			<read_col>s_dob</read_col>
+			<write_col>s_dob</write_col>
+		</MappedPair>
+	<MappedPair attr="MOB" algorithm="EDIT_DISTANCE" weight="0.2">
+			<read_col>s_mob</read_col>
+			<write_col>s_mob</write_col>
+		</MappedPair>
+	<MappedPair attr="YOB" algorithm="EDIT_DISTANCE" weight="0.2">
+			<read_col>s_yob</read_col>
+			<write_col>s_yob</write_col>
+		</MappedPair>
+		<MappedPair attr="sex" algorithm="EDIT_DISTANCE" weight="0.2">
+			<read_col>sex</read_col>
+			<write_col>sex</write_col>
+		</MappedPair>
+		<MappedPair attr="LastName" algorithm="EDIT_DISTANCE" weight="0.2">
+			<read_col>Last</read_col>
+			<write_col>Last</write_col>
+		</MappedPair>
+		<MappedPair attr="FirstName" algorithm="EDIT_DISTANCE" weight="0.2">
+			<read_col>First</read_col>
+			<write_col>First</write_col>
+		</MappedPair>
+		<MappedPair attr="City" algorithm="EDIT_DISTANCE" weight="0.2">
+			<read_col>city</read_col>
+			<write_col>city</write_col>
+		</MappedPair>
+		
+	</DatabaseMap>
+	<Linking>
+		<left_pk>id</left_pk>
+		<right_pk>id</right_pk>
+	</Linking>
+	
+</linkage_config>

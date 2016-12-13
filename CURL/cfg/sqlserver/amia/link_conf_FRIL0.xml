@@ -1,0 +1,89 @@
+<?xml version="1.0" ?>
+
+<linkage_config>
+
+	<DBMS>SQLServer</DBMS>
+
+	<DatabaseSourceA>
+		<database>curl</database>
+		<table>source_a_1k_missing</table>
+		<schema>dbo</schema>
+		<url>jdbc:sqlserver://127.0.0.1:1433</url>
+		<user>curl_user</user>
+		<password>Thanhhien81</password>
+	</DatabaseSourceA>
+
+	<DatabaseSourceB>
+		<database>curl</database>
+		<table>source_b_1k_missing</table>
+		<schema>dbo</schema>
+		<url>jdbc:sqlserver://127.0.0.1:1433</url>
+		<user>curl_user</user>
+		<password>Thanhhien81</password>
+	</DatabaseSourceB>
+
+	<DatabaseSaver>
+		<database>curl</database>
+		<schema>dbo</schema>
+		<url>jdbc:sqlserver://127.0.0.1:1433</url>
+		<user>curl_user</user>
+		<password>Thanhhien81</password>
+	</DatabaseSaver>
+
+	<LinkageConfig>
+		<acceptancelevel>85</acceptancelevel>
+		<weightidenfifier>EM</weightidenfifier>
+		<joinmethod>NESTED_LOOP_JOIN</joinmethod>
+		<missingdatavalue>0</missingdatavalue>
+		<max_cpu>8</max_cpu>
+	</LinkageConfig>
+
+	
+	<DatabaseMap>
+
+	<MappedPair attr="first" algorithm="EDIT_DISTANCE" weight="0.25">
+			<read_col>first</read_col>
+			<write_col>first</write_col>
+		</MappedPair>
+	<MappedPair attr="last" algorithm="EDIT_DISTANCE" weight="0.25">
+			<read_col>last</read_col>
+			<write_col>last</write_col>
+		</MappedPair>
+	<MappedPair attr="DOB" algorithm="EDIT_DISTANCE" weight="0.15">
+			<read_col>s_dob</read_col>
+			<write_col>s_dob</write_col>
+		</MappedPair>
+	<MappedPair attr="MOB" algorithm="EDIT_DISTANCE" weight="0.15">
+			<read_col>s_mob</read_col>
+			<write_col>s_mob</write_col>
+		</MappedPair>
+	<MappedPair attr="YOB" algorithm="EDIT_DISTANCE" weight="0.2">
+			<read_col>s_yob</read_col>
+			<write_col>s_yob</write_col>
+		</MappedPair>
+
+	<MappedPair attr="Zip3" algorithm="EDIT_DISTANCE" weight="0">
+			<read_col>state</read_col>
+			<write_col>state</write_col>
+		</MappedPair>
+		
+	</DatabaseMap>
+
+	<EMBlocking>
+		<read_col>state</read_col>
+		<write_col>state</write_col>
+	</EMBlocking>
+
+	<Blocking>
+		<read_col>zip3</read_col>
+		<write_col>zip3</write_col>
+	</Blocking>
+
+	
+	<Linking>
+		<left_pk>id2</left_pk>
+		<right_pk>id2</right_pk>
+	</Linking>
+	
+</linkage_config>
+

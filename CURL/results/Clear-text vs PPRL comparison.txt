@@ -1,0 +1,28 @@
+Clear-text 1000 acceptance level 80
+
+SSN - 0.48
+Last Name - 0.18
+First name - 0.15
+Zip - 0.19
+
+TP: 799
+FP: 0
+TN: 200
+FN: 1
+Sensitivity: 0.99875
+Specificity: 1.0
+
+=============================================
+
+
+0.48
+0.18
+0.15
+0.19
+
+TP: 773
+FP: 0
+TN: 200
+FN: 27
+Sensitivity: 0.96625
+Specificity: 1.0

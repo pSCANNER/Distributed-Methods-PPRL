@@ -1,0 +1,88 @@
+<?xml version="1.0" ?>
+
+<linkage_config>
+
+<DBMS>PostgreSQL</DBMS>
+
+<DatabaseSourceA>
+<database>rosita</database>
+<table>source14k_a_encrypted</table>
+<schema>tz</schema>
+<url>jdbc:postgresql://localhost:5432/</url>
+<user>rosita</user>
+<password>rosita@2012</password>
+</DatabaseSourceA>
+
+<DatabaseSourceB>
+<database>rosita</database>
+<table>source14k_b_encrypted </table>
+<schema>tz</schema>
+<url>jdbc:postgresql://localhost:5432/</url>
+<user>rosita</user>
+<password>rosita@2012</password>
+</DatabaseSourceB>
+
+<DatabaseSaver>
+<database>rosita</database>
+<schema>tz</schema>
+<url>jdbc:postgresql://localhost:5432/</url>
+<user>rosita</user>
+<password>rosita@2012</password>
+</DatabaseSaver>
+
+<LinkageConfig>
+<acceptancelevel>90</acceptancelevel>
+<pprlthreshold>0.5</pprlthreshold>
+<emrandomsamplesize>100</emrandomsamplesize>
+<weightidenfifier>MANUAL</weightidenfifier>
+<joinmethod>BLOCKING_SEARCH</joinmethod>
+<missingdatavalue>0</missingdatavalue>
+</LinkageConfig>
+
+<DatabaseMap>
+
+<MappedPair attr="DOB" algorithm="PPRL" weight="0.15">
+<read_col>s_dob_hash</read_col>
+<write_col>s_dob_hash</write_col>
+</MappedPair>
+<MappedPair attr="MOB" algorithm="PPRL" weight="0.15">
+<read_col>s_mob_hash</read_col>
+<write_col>s_mob_hash</write_col>
+</MappedPair>
+<MappedPair attr="YOB" algorithm="PPRL" weight="0.15">
+<read_col>s_yob_hash</read_col>
+<write_col>s_yob_hash</write_col>
+</MappedPair>
+<MappedPair attr="gender" algorithm="PPRL" weight="0.05">
+<read_col>sex_hash</read_col>
+<write_col>sex_hash</write_col>
+</MappedPair>
+<MappedPair attr="LastName" algorithm="PPRL" weight="0.25">
+<read_col>last_hash</read_col>
+<write_col>last_hash</write_col>
+</MappedPair>
+<MappedPair attr="FirstName" algorithm="PPRL" weight="0.25">
+<read_col>first_hash</read_col>
+<write_col>first_hash</write_col>
+</MappedPair>
+<MappedPair attr="Zip" algorithm="PPRL" weight="0">
+<read_col>zip_hash</read_col>
+<write_col>zip_hash</write_col>
+</MappedPair>
+</DatabaseMap>
+
+<EMBlocking>
+<read_col>zip_hash</read_col>
+<write_col>zip_hash</write_col>
+</EMBlocking>
+
+<Blocking>
+<read_col>zip_hash</read_col>
+<write_col>zip_hash</write_col>
+</Blocking>
+
+<Linking>
+<left_pk>id</left_pk>
+<right_pk>id</right_pk>
+</Linking>
+</linkage_config>

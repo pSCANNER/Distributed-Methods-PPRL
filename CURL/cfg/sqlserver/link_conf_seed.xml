@@ -1,0 +1,85 @@
+<?xml version="1.0" ?>
+
+<linkage_config>
+
+	<DBMS>SQLServer</DBMS>
+
+	<DatabaseSourceA>
+		<database>curl</database>
+		<table>encrypted_source14k_a</table>
+		<schema>dbo</schema>
+		<url>jdbc:sqlserver://127.0.0.1:1433</url>
+		<user>curl_user</user>
+		<password>Thanhhien81</password>
+	</DatabaseSourceA>
+
+	<DatabaseSourceB>
+		<database>curl</database>
+		<table>encrypted_source14k_b</table>
+		<schema>dbo</schema>
+		<url>jdbc:sqlserver://127.0.0.1:1433</url>
+		<user>curl_user</user>
+		<password>Thanhhien81</password>
+	</DatabaseSourceB>
+
+	<DatabaseSaver>
+		<database>curl</database>
+		<schema>dbo</schema>
+		<url>jdbc:sqlserver://127.0.0.1:1433</url>
+		<user>curl_user</user>
+		<password>Thanhhien81</password>
+	</DatabaseSaver>
+
+	<LinkageConfig>
+		<acceptancelevel>95</acceptancelevel>
+		<weightidenfifier>manual</weightidenfifier>
+		<joinmethod>BLOCKING_SEARCH</joinmethod>
+		<missingdatavalue>0</missingdatavalue>
+		<pprlthreshold>0.9</pprlthreshold>
+		<max_cpu>8</max_cpu>
+	</LinkageConfig>
+
+	
+	<DatabaseMap>
+
+	<MappedPair attr="first" algorithm="PPRL" weight="1.01">
+			<read_col>seed1_bloom</read_col>
+			<write_col>seed1_bloom</write_col>
+		</MappedPair>
+	<MappedPair attr="last" algorithm="PPRL" weight="1.01">
+			<read_col>seed2_bloom</read_col>
+			<write_col>seed2_bloom</write_col>
+		</MappedPair>
+	<MappedPair attr="DOB" algorithm="PPRL" weight="1.01">
+			<read_col>seed3_bloom</read_col>
+			<write_col>seed3_bloom</write_col>
+		</MappedPair>
+	<MappedPair attr="MOB" algorithm="PPRL" weight="1.01">
+			<read_col>seed4_bloom</read_col>
+			<write_col>seed4_bloom</write_col>
+		</MappedPair>
+	<MappedPair attr="Zip3" algorithm="PPRL" weight="0">
+			<read_col>zip3_hash</read_col>
+			<write_col>zip3_hash</write_col>
+		</MappedPair>
+		
+	</DatabaseMap>
+
+	<EMBlocking>
+		<read_col>zip3_hash</read_col>
+		<write_col>zip3_hash</write_col>
+	</EMBlocking>
+
+	<Blocking>
+		<read_col>zip3_hash</read_col>
+		<write_col>zip3_hash</write_col>
+	</Blocking>
+
+	
+	<Linking>
+		<left_pk>id</left_pk>
+		<right_pk>id</right_pk>
+	</Linking>
+	
+</linkage_config>
+

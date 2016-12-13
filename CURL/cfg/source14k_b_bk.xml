@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+
+<encryption_config>
+	<DBMS>PostgreSQL</DBMS>
+	<DatabaseReaderConnection>
+		<database>rosita</database>
+		<schema>tz</schema>
+		<table>source14k_a</table>
+		<url>jdbc:postgresql://localhost:5432/</url>
+		<user>rosita</user>
+		<password>rosita@2012</password>
+	</DatabaseReaderConnection>
+
+	<DatabaseWriterConnection>
+		<database>rosita</database>
+		<schema>tz</schema>
+		<table>source14k_a_encrypted</table>
+		<url>jdbc:postgresql://localhost:5432/</url>
+		<user>rosita</user>
+		<password>rosita@2012</password>
+	</DatabaseWriterConnection>
+
+	<DatabaseMap>
+		
+
+		<MappedPair algorithm="PPRL" attr="id" clear-text="yes">
+			<read_col>id</read_col>
+			<write_col>id</write_col>	
+		</MappedPair>
+		<MappedPair algorithm="PPRL" clear-text="hash-only">
+			<read_col>seed1_a</read_col>
+			<write_col>seed1_hash</write_col>
+		</MappedPair>
+		<MappedPair algorithm="PPRL" clear-text="hash-only">
+			<read_col>seed2_a</read_col>
+			<write_col>seed2_hash</write_col>
+		</MappedPair>
+		<MappedPair algorithm="PPRL" clear-text="hash-only">
+			<read_col>seed3_a</read_col>
+			<write_col>seed3_hash</write_col>
+		</MappedPair>
+		<MappedPair algorithm="PPRL" clear-text="hash-only">
+			<read_col>seed4_a</read_col>
+			<write_col>seed4_hash</write_col>
+		</MappedPair>
+		<MappedPair algorithm="PPRL" attr="seed1">
+			<read_col>seed1</read_col>
+			<write_col>seed1_bloom</write_col>
+		</MappedPair>
+		<MappedPair algorithm="PPRL" attr="seed2">
+			<read_col>seed2</read_col>
+			<write_col>seed2_bloom</write_col>
+		</MappedPair>
+		<MappedPair algorithm="PPRL" attr="seed3">
+			<read_col>seed3</read_col>
+			<write_col>seed3_bloom</write_col>
+		</MappedPair>
+		<MappedPair algorithm="PPRL" attr="seed4">
+			<read_col>seed4</read_col>
+			<write_col>seed4_bloom</write_col>
+		</MappedPair>
+	</DatabaseMap>
+
+	<Blocking>
+		<read_col>zip</read_col>
+		<write_col>zip_hash</write_col>
+	</Blocking>
+
+</encryption_config>
+
+
+

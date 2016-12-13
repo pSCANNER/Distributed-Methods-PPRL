@@ -1,0 +1,29 @@
+//This script has the following input parameters:
+//   column - string value of the column that is being split
+//   splitStr - string used for splitting
+//   outSize - expected number of strings in output array
+//This script is expected to return array of strings of length outSize
+
+//Split input
+String[] strArray = column.split(splitStr);
+
+//Create output array
+String[] out = new String[outSize];
+
+//Fill in the out array
+for (int i = 0; i < outSize; i++) {
+   if (strArray.length > i) {
+       out[i] = strArray[i];
+   } else {
+       out[i] = "";
+   }
+}
+
+//Append reminder items
+if (outSize < strArray.length) { 
+   for (int i = outSize; i < strArray.length; i++) {
+       out[outSize - 1] = out[outSize - 1] + splitStr + strArray[i];
+   }
+}
+
+return out;

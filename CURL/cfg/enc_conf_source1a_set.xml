@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<encryption_config>
+	<DBMS>PostgreSQL</DBMS>
+	<DatabaseReaderConnection>
+		<database>rosita</database>
+		<schema>tz</schema>
+		<table>source1a_set</table>
+		<url>jdbc:postgresql://localhost:5432/</url>
+		<user>rosita</user>
+		<password>rosita@2012</password>
+	</DatabaseReaderConnection>
+
+	<DatabaseWriterConnection>
+		<database>rosita</database>
+		<schema>tz</schema>
+		<table>source1a_set_encrypted</table>
+		<url>jdbc:postgresql://localhost:5432/</url>
+		<user>rosita</user>
+		<password>rosita@2012</password>
+	</DatabaseWriterConnection>
+
+	<DatabaseMap>
+		<MappedPair algorithm="PPRL" attr="fn_ln_dob">
+			<read_col>fn_ln_dob</read_col>
+			<write_col>fn_ln_dob_hash</write_col>
+		</MappedPair>
+
+		<MappedPair algorithm="PPRL" attr="dob_email">
+			<read_col>dob_email</read_col>
+			<write_col>dob_email_hash</write_col>
+		</MappedPair>
+
+		<MappedPair algorithm="PPRL" attr="ln_email">
+			<read_col>ln_email</read_col>
+			<write_col>ln_email_hash</write_col>
+		</MappedPair>
+
+		<MappedPair algorithm="PPRL" attr="long_hash">
+			<read_col>long_hash</read_col>
+			<write_col>long_hash_hash</write_col>	
+		</MappedPair>
+
+		<MappedPair algorithm="PPRL" attr="id" clear-text="yes">
+			<read_col>id</read_col>
+			<write_col>id</write_col>
+		</MappedPair>
+
+	</DatabaseMap>
+
+	<Blocking>
+		<read_col>zip</read_col>
+		<write_col>zip_hash</write_col>
+	</Blocking>
+
+</encryption_config>
+
+
+

@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+
+<linkage_config>
+	<DBMS>MySQL</DBMS>
+	<DatabaseSourceA>
+		<database>pprl</database>
+		<table>TblSourceA</table>
+		<url>jdbc:mysql://140.226.134.40:3306/</url>
+		<user>username</user>
+		<password>toor3</password>
+	</DatabaseSourceA>
+
+	<DatabaseSourceB>
+		<database>pprl</database>
+		<table>TblSourceB</table>
+		<url>jdbc:mysql://140.226.135.40:3306/</url>
+		<user>username</user>
+		<password>password</password>
+	</DatabaseSourceB>
+
+	<DatabaseSaver>
+		<database>pprl</database>
+		<url>jdbc:mysql://140.226.136.40:3306/</url>
+		<user>username</user>
+		<password>password</password>
+	</DatabaseSaver>
+
+	<LinkageConfig>
+		<acceptancelevel>80</acceptancelevel>
+		<weightidenfifier>EM</weightidenfifier>
+		<joinmethod>NESTED_LOOP_JOIN</joinmethod>
+		<missingdatavalue>ATTRIBUTE_DEDUCTION</missingdatavalue>
+	</LinkageConfig>
+
+	
+	<DatabaseMap>
+		
+		<MappedPair attr="SSN" algorithm="EDIT_DISTANCE" weight="0.4">
+			<read_col>SSN</read_col>
+			<write_col>SSN</write_col>
+		</MappedPair>
+		<MappedPair attr="LastName" algorithm="EDIT_DISTANCE" weight="0.2">
+			<read_col>ln</read_col>
+			<write_col>ln</write_col>
+		</MappedPair>
+		<MappedPair attr="FirstName" algorithm="EDIT_DISTANCE" weight="0.2">
+			<read_col>fn</read_col>
+			<write_col>fn</write_col>
+		</MappedPair>
+		<MappedPair attr="Zip" algorithm="EDIT_DISTANCE" weight="0.2">
+			<read_col>zip</read_col>
+			<write_col>zip</write_col>
+		</MappedPair>
+		
+	</DatabaseMap>
+	<Linking>
+		<left_pk>ssn_pk</left_pk>
+		<right_pk>ssn_pk</right_pk>
+	</Linking>
+	
+</linkage_config>

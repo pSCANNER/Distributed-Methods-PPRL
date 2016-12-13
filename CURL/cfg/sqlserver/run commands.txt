@@ -1,0 +1,1 @@
+java -jar curl_link2.jar -Xms12g -Xmx12g -XX:MaxPermSize=1024M file=cfg/sqlserver/curl_link.xml

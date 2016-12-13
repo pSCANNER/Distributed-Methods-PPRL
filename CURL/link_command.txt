@@ -1,0 +1,2 @@
+java –Xms16g –Xmx16g –XX:MaxPermSize=1024M –jar curl_link.jar file=/home/rosita/git/pprl_project/cfg/Test_FRIL_0_14K_encrypted.xml
+

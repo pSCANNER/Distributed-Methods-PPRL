@@ -1,0 +1,11 @@
+//This script can use two parameters:
+//   column - value of converter's input column
+//   lookFor - regular expressions to be looked for (Array of Strings)
+//   replaceWith - values (Array of Strings)
+//Comment: lookFor[i] should be replaced with replaceWith[i]
+//Return value: String
+
+for (int i = 0; i < lookFor.length; i++) {
+	column = column.replaceAll(lookFor[i], replaceWith[i]);
+}
+return column;

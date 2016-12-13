@@ -1,0 +1,11 @@
+//This script uses the following parameters:
+//   column - string value of attribute
+//   appendFront - string that should be appended in front
+//   appendEnd - string that should be appended at end
+//Return value: String
+
+StringBuffer out = new StringBuffer(appendFront);
+out.append(column);
+out.append(appendEnd);
+
+return out.toString();
