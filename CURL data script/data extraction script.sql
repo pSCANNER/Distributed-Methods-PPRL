@@ -18,10 +18,10 @@ IF OBJECT_ID('dbo.curl_person', 'U') IS NOT NULL DROP TABLE [dbo].[curl_person];
 
 CREATE TABLE [dbo].[curl_person] AS
 SELECT 
-	p.[phi_id]						as id,
+	p.[master_id]						as id,
 	p.[first_name]						as first name,
-	p.[middle_name						as middle_name,
-	p.[last_name]						as last_name,
+	p.[middle_name]						as middle_name,
+	p.[surname]						as last_name,
 	CONVERT(char(10), p.[birth_date],126)	as dob,
 	CASE 
 		WHEN p.[gender_concept_id] = 8532 THEN 'F' 
@@ -36,14 +36,14 @@ SELECT
 	p.race_concept_id					as race,
 	p.ethnicity_concept_id				as ethnicity,
 	t1.value							as home_phone,
-	t2.value							as cell_phone,
+	t2.value							as work_phone,
 	t3.value							as email,
 	NULL 								as pcp_npi
 FROM 
 	[dbo].[phi_person] p
 	LEFT JOIN [dbo].[phi_location] l ON p.[master_id]=l.[master_id]  AND l.[use_concept_id] = ### (home address)
 	LEFT JOIN [dbo].[phi_telecom] t1 ON p.[master_id]=t1.[master_id] AND t1.[system_concept_id] = ### (home_phone)
-	LEFT JOIN [dbo].[phi_telecom] t2 ON p.[master_id]=t2.[master_id] AND t2.[system_concept_id] = ### (cell_phone)
+	LEFT JOIN [dbo].[phi_telecom] t2 ON p.[master_id]=t2.[master_id] AND t2.[system_concept_id] = ### (work_phone)
 	LEFT JOIN [dbo].[phi_telecom] t3 ON p.[master_id]=t3.[master_id] AND t3.[system_concept_id] = ### (email)
 WHERE 
 	l.[prefered_record] = 1 AND
