@@ -41,10 +41,10 @@ SELECT
 	NULL 								as pcp_npi
 FROM 
 	[dbo].[phi_person] p
-	LEFT JOIN [dbo].[phi_location] l ON p.[master_id]=l.[master_id]  AND l.[use_concept_id] = ### (home address)
-	LEFT JOIN [dbo].[phi_telecom] t1 ON p.[master_id]=t1.[master_id] AND t1.[system_concept_id] = ### (home_phone)
-	LEFT JOIN [dbo].[phi_telecom] t2 ON p.[master_id]=t2.[master_id] AND t2.[system_concept_id] = ### (work_phone)
-	LEFT JOIN [dbo].[phi_telecom] t3 ON p.[master_id]=t3.[master_id] AND t3.[system_concept_id] = ### (email)
+	LEFT JOIN [dbo].[phi_location] l ON p.[master_id]=l.[master_id]  AND l.[use_concept_id] = 'home' -- (home address)
+	LEFT JOIN [dbo].[phi_telecom] t1 ON p.[master_id]=t1.[master_id] AND t1.[system_concept_id] = 'home' -- (home_phone)
+	LEFT JOIN [dbo].[phi_telecom] t2 ON p.[master_id]=t2.[master_id] AND t2.[system_concept_id] = 'work' -- (work_phone)
+	LEFT JOIN [dbo].[phi_telecom] t3 ON p.[master_id]=t3.[master_id] AND t3.[system_concept_id] = 'email' -- (email)
 WHERE 
 	l.[prefered_record] = 1 AND
 	t1.[prefered_record] = 1 AND
