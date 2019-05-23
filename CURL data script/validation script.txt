@@ -1,14 +1,14 @@
-WITH linkages AS (SELECT DISTINCT TOP 100 a.local_id left_id, b.local_id right_id from <<Network_ID table>> a join <<Network_ID table>> b on
-a.network_id = b.network_id and a.local_id>b.local_id) 
-SELECT '/*result:,note:*/ SELECT * from <<PHI Table>> WHERE
-local_id = '+str(left_id) + ' UNION' + ' select * from [curl_person] WHERE local_id='+str(right_id) As sql_statement
-INTO DBO.VALIDATION_QUERY
-FROM linkages;
+SELECT '/*result:,note:*/ ' +
+' SELECT * from <<PHI Table>> WHERE person_id = ' + str(a.left_id) +
+' UNION ' +
+' SELECT * from <<PHI Table>> WHERE person_id = ' + str(a.right_id) As sql_statement
+INTO <<DBO>>.VALIDATION_QUERY
+FROM <<sample table>> a;
 
 
 Notes:
 - Replace <<PHI Table>> with the name of the table with patient identifier data that you used in the hashing
 process in CURL 
-- Replace <<Network_ID table>> with the name of the table with network ids you loaded in Step 1 Note: If
-you are not using SQL Server dbo might not be the name of the schema. If that’s the case, please replace dbo with the
-name of the schema that you are working with
+- Replace <<sample table>> with the name of the table with sample you received from UCDenver.
+- <<DBO>> If you are not using SQL Server dbo might not be the name of the schema. If that’s the case, please replace dbo with the
+name of the schema that you are working with.
