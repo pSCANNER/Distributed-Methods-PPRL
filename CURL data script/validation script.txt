@@ -1,14 +1,13 @@
-SELECT '/*result:,note:*/ ' +
-' SELECT * from <<PHI Table>> WHERE person_id = ' + str(a.left_id) +
+SELECT '/*result:,note:,lid:'+a.left_id+',rid:'+a.right_id+'*/ ' +
+' SELECT * from <<PHI Table>> WHERE <<person_id>> = ' + str(a.left_id) +
 ' UNION ' +
-' SELECT * from <<PHI Table>> WHERE person_id = ' + str(a.right_id) As sql_statement
-INTO <<DBO>>.VALIDATION_QUERY
+' SELECT * from <<PHI Table>> WHERE <<person_id>> = ' + str(a.right_id) As sql_statement
+INTO <<schema>>.VALIDATION_QUERY
 FROM <<sample table>> a;
 
 
 Notes:
-- Replace <<PHI Table>> with the name of the table with patient identifier data that you used in the hashing
-process in CURL 
+- Replace <<PHI Table>> with the name of the table with patient identifier data that you used in the hashing process in CURL.
 - Replace <<sample table>> with the name of the table with sample you received from UCDenver.
-- <<DBO>> If you are not using SQL Server dbo might not be the name of the schema. If that’s the case, please replace dbo with the
-name of the schema that you are working with.
+- Replace <<schema>> with the name of the schema that you'd like to put the VALIDATION_QUERY table in.
+- Replace <<person_id>> with the name of the column for id field in your <<PHI Table>>.
